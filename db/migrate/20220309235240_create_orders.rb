@@ -5,7 +5,7 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.boolean :delivery, default: false
       t.json :toppings, array: true, default: "[]"
       t.json :extras, array: true, default: "[]"
-      t.integer :step, default: 0
+      t.integer :step, default: 1
 
       t.timestamps
     end

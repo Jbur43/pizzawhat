@@ -12,11 +12,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = Order.create
+    redirect_to edit_order_path(@order)
   end
 
   # GET /orders/1/edit
   def edit
+    @order = @order
   end
 
   # POST /orders or /orders.json
@@ -39,7 +41,8 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
+        # format.turbo_stream { render turbo_stream: turbo_stream.prepend("orders", partial: "orders/order", locals: { order: @order }) }
+        format.html { redirect_to edit_order_path(@order), notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }

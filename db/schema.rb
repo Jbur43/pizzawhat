@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_09_235240) do
     t.boolean "delivery", default: false
     t.json "toppings", default: "[]"
     t.json "extras", default: "[]"
-    t.integer "step", default: 0
+    t.integer "step", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

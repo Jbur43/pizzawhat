@@ -1,0 +1,5 @@
+  <%= form.label :toppings %>
+  <% Order::TOPPINGS.each do |topping| %>
+    <%= form.check_box :toppings, {multiple: true }, topping, false %>
+    <%= form.label topping %>
+  <% end %>

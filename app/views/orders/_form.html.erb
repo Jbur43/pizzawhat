@@ -1,3 +1,4 @@
+<% p "CALLED" %>
 <%= form_with(model: order) do |form| %>
   <% if order.errors.any? %>
     <div style="color: red">
@@ -11,14 +12,8 @@
     </div>
   <% end %>
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= render partial: "orders/partials/step_#{order.step}", locals: { order: order, form: form } %>
 
-  <%= form.label :toppings %>
-  <% Order::TOPPINGS.each do |topping| %>
-    <%= form.check_box :toppings, {multiple: true }, topping, false %>
-    <%= form.label topping %>
-  <% end %>
   <div>
     <%= form.submit %>
   </div>
