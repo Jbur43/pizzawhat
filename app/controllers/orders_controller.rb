@@ -69,6 +69,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order).permit(:name, toppings: [])
+      params.fetch(:order).permit(:name, toppings: [], extras: [])
     end
 end

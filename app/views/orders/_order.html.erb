@@ -1,4 +1,17 @@
 <div id="<%= dom_id order %>">
 
+<h3>NAME</h3>
+<%= order.name %>
+
+<h3>TOPPINGS</h3>
+<% order.toppings.each do |topping| %>
+  <p><%= topping %></p>
+<% end %>
+
+<h3>EXTRAS</h3>
+<% order.extras.each do |extra| %>
+  <p><%= extra %></p>
+<% end %>
+
 </div>
 <br />

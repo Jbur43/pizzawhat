@@ -1,0 +1,5 @@
+  <%= form.label :extras %>
+  <% Order::EXTRAS.each do |extra| %>
+    <%= form.check_box :extras, {multiple: true }, extra, false %>
+    <%= form.label extra %>
+  <% end %>

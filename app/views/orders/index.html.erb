@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
+
 <h1>Orders</h1>
+<%= turbo_stream_from "orders" %>
 
 <div id="orders">
   <% @orders.each do |order| %>
