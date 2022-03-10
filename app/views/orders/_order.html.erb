@@ -1,0 +1,10 @@
+<div id="<%= dom_id order %>">
+  <h4>Order</h4>
+  <p><%= order.name %> </p>
+
+  <div>Toppings</div>
+  <% order.toppings.each do |topping| %>
+    <p><%= topping%></p>
+  <% end %>
+</div>
+<br />
