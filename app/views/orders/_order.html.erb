@@ -1,17 +1,30 @@
+<%= turbo_frame_tag "new_thing", src: "/flipper", target: "_top" do %>
+  <div>Placeholder</div>
+<% end %>
+
 <div id="<%= dom_id order %>">
 
 <h3>NAME</h3>
-<%= order.name %>
+<%= turbo_frame_tag "order_name" do %>
+  <div><%= order.name %></div>
+  <%= link_to "Edit Name", edit_order_from_step_path(@order, 1) %>
+<% end %>
+<br />
 
 <h3>TOPPINGS</h3>
-<% order.toppings.each do |topping| %>
-  <p><%= topping %></p>
+<%= turbo_frame_tag "order_toppings" do %>
+  <% order.toppings.each do |topping| %>
+    <p><%= topping %></p>
+  <% end %>
+  <%= link_to "Edit Toppings", edit_order_from_step_path(@order, 2) %>
 <% end %>
+<br />
 
 <h3>EXTRAS</h3>
-<% order.extras.each do |extra| %>
-  <p><%= extra %></p>
+<%= turbo_frame_tag "order_extras" do %>
+  <% order.extras.each do |extra| %>
+    <p><%= extra %></p>
+  <% end %>
+  <%= link_to "Edit Extras", edit_order_from_step_path(@order, 3) %>
 <% end %>
-
-</div>
 <br />

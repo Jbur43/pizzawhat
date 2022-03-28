@@ -1,5 +1,7 @@
-  <%= form.label :toppings %>
+<h1>Toppings</h1>
+<%= turbo_frame_tag "order_toppings" do %>
   <% Order::TOPPINGS.each do |topping| %>
-    <%= form.check_box :toppings, {multiple: true }, topping, false %>
+    <%= form.check_box :toppings, {multiple: true, class: "shadow border inline-block border-stone-300 rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" }, topping, false %>
     <%= form.label topping %>
   <% end %>
+<% end %>

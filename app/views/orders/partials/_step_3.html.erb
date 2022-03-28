@@ -1,5 +1,8 @@
-  <%= form.label :extras %>
+<h1>Extras</h1>
+<%= turbo_frame_tag "order_extras" do %>
   <% Order::EXTRAS.each do |extra| %>
-    <%= form.check_box :extras, {multiple: true }, extra, false %>
+    <br />
+    <%= form.check_box :extras, {multiple: true, class: "shadow border inline-block border-stone-300 rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"}, extra, false %>
     <%= form.label extra %>
   <% end %>
+<% end %>

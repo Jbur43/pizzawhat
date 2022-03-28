@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[ show edit update destroy edit_from_step ]
 
   # GET /orders or /orders.json
   def index
@@ -8,6 +8,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+  end
+
+  def flipper
   end
 
   # GET /orders/new
@@ -19,6 +22,13 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = @order
+  end
+
+  def edit_from_step
+    @order = @order
+    @step = params[:step_id]
+
+    render :edit
   end
 
   # POST /orders or /orders.json

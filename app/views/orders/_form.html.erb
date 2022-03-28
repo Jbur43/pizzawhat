@@ -11,9 +11,7 @@
     </div>
   <% end %>
 
-  <%= render partial: "orders/partials/step_#{order.step}", locals: { order: order, form: form } %>
+  <%= render partial: "orders/partials/step_#{@step ? @step : order.step}", locals: { order: order, form: form } %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form.submit "Continue Order", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
 <% end %>
