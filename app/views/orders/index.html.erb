@@ -4,8 +4,7 @@
 <%= turbo_stream_from "orders" %>
 
 <div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
+  <% @orders.each_with_index do |order, index| %>
+    <%= render partial: order, locals: { index: index }  %>
   <% end %>
-  ........................
 </div>

@@ -4,3 +4,20 @@
 
 <h1>AMOUNT DUE</h1>
 <p>10,0000 bitcoin</p>
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.text_field :id, type: :hidden %>
+  <%= form.submit "Complete Order" %>
+<% end %>
+

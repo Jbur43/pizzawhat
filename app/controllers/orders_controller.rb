@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
   def flipper
   end
 
+  def complete
+  end
+
   # GET /orders/new
   def new
     @order = Order.create
@@ -21,7 +24,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
-    @order = @order
+    # if @order.step == 5
+    #   return redirect_to complete_order_path(@order)
+    # end
   end
 
   def edit_from_step
@@ -49,8 +54,13 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+    order = @order.update(order_params)
+    # if @order.step == 5
+    #   return redirect_to complete_order_path(@order)
+    # end
+
     respond_to do |format|
-      if @order.update(order_params)
+      if order
         # format.turbo_stream { render turbo_stream: turbo_stream.prepend("orders", partial: "orders/order", locals: { order: @order }) }
         format.html { redirect_to edit_order_path(@order), notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
@@ -79,6 +89,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order).permit(:name, toppings: [], extras: [])
+      params.fetch(:order).permit(:id, :frame_id, :name, toppings: [], extras: [])
     end
 end

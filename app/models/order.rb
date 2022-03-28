@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  TOPPINGS = ["perpperoni", "sausage", "red onion", "banana peppers"]
+  TOPPINGS = ["perpperoni", "sausage", "red onion", "banana peppers", "anchovies"]
   EXTRAS = ["extra cheese", "brownie", "breadsticks"]
 
   broadcasts_to ->(todo) { "orders" }, inserts_by: :prepend, target: "orders"

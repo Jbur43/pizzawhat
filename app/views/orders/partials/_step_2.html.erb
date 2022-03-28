@@ -1,7 +1,23 @@
 <h1>Toppings</h1>
-<%= turbo_frame_tag "order_toppings" do %>
-  <% Order::TOPPINGS.each do |topping| %>
-    <%= form.check_box :toppings, {multiple: true, class: "shadow border inline-block border-stone-300 rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" }, topping, false %>
-    <%= form.label topping %>
+<% toppings_frame_id = dom_id(order, "toppings") %>
+<%= turbo_frame_tag toppings_frame_id, data: { turbo_frame: toppings_frame_id } do %>
+  <%= form_with(model: order) do |form| %>
+    <% if order.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+        <ul>
+          <% order.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% Order::TOPPINGS.each do |topping| %>
+      <%= form.check_box :toppings, {multiple: true}, topping, false %>
+      <%= form.label topping %>
+    <% end %>
+    <%= form.submit "Continue Order" %>
   <% end %>
 <% end %>

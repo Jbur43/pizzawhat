@@ -1,17 +1,1 @@
-<%= form_with(model: order) do |form| %>
-  <% if order.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-        <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= render partial: "orders/partials/step_#{@step ? @step : order.step}", locals: { order: order, form: form } %>
-
-  <%= form.submit "Continue Order", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-<% end %>
+<%= render partial: "orders/partials/step_#{@step ? @step : order.step}", locals: { order: order } %>
