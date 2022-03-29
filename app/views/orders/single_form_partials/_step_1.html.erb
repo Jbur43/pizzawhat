@@ -1,0 +1,6 @@
+<h1>Name</h1>
+<% name_frame_id = dom_id(order, "name") %>
+<%= turbo_frame_tag name_frame_id, data: { turbo_frame: name_frame_id } do %>
+  <%= form.text_field :name %>
+  <%= form.submit "Continue Order" %>
+<% end %>

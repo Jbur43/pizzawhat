@@ -1,1 +1,15 @@
-<%= render partial: "orders/partials/step_#{@step ? @step : order.step}", locals: { order: order } %>
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render partial: "orders/single_form_partials/step_#{@step ? @step : order.step}", locals: { order: order, form: form } %>
+<% end %>

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy edit_from_step ]
+  before_action :set_order, only: %i[ show edit update destroy edit_from_step edit_from_step_separate_form ]
 
   # GET /orders or /orders.json
   def index
@@ -34,6 +34,11 @@ class OrdersController < ApplicationController
     @step = params[:step_id]
 
     render :edit
+  end
+
+  def edit_from_step_separate_form
+    @order = @order
+    @step = params[:step_id]
   end
 
   # POST /orders or /orders.json

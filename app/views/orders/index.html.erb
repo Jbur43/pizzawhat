@@ -5,6 +5,6 @@
 
 <div id="orders">
   <% @orders.each_with_index do |order, index| %>
-    <%= render partial: order, locals: { index: index }  %>
+    <%= render partial: "order_for_separate_form", locals: { index: index, order: order }  %>
   <% end %>
 </div>

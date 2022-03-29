@@ -1,4 +1,3 @@
-<%# inline editing only works on orders#edit %>
 <%= turbo_frame_tag "new_thing", src: "/flipper", target: "_top" do %>
   <div>Placeholder</div>
 <% end %>
@@ -7,7 +6,7 @@
 <%= turbo_frame_tag name_frame_id, data: { turbo_frame: name_frame_id } do %>
   <h3>NAME</h3>
   <div><%= order.name %></div>
-  <%= link_to "Edit Name", edit_order_from_step_path(order, 1) %>
+  <%= link_to "Edit Name", edit_from_step_separate_form_path(order, 1) %>
   <br/>
 <% end %>
 
@@ -17,7 +16,7 @@
   <% order.toppings.each do |topping| %>
     <p><%= topping %></p>
   <% end %>
-  <%= link_to "Edit Toppings", edit_order_from_step_path(order, 2) %>
+  <%= link_to "Edit Toppings", edit_from_step_separate_form_path(order, 2) %>
   <br />
 <% end %>
 
@@ -27,6 +26,6 @@
   <% order.extras.each do |extra| %>
     <p><%= extra %></p>
   <% end %>
-  <%= link_to "Edit Extras", edit_order_from_step_path(order, 3) %>
+  <%= link_to "Edit Extras", edit_from_step_separate_form_path(order, 3) %>
   <br /><br />
 <% end %>

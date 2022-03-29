@@ -1,0 +1,10 @@
+<h1>Extras</h1>
+<% extras_frame_id = dom_id(order, "extras") %>
+<%= turbo_frame_tag extras_frame_id, data: { turbo_frame: extras_frame_id } do %>
+  <% Order::EXTRAS.each do |extra| %>
+    <br />
+    <%= form.check_box :extras, {multiple: true}, extra, false %>
+    <%= form.label extra %>
+  <% end %>
+  <%= form.submit "Continue Order" %>
+<% end %>

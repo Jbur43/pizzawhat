@@ -1,0 +1,9 @@
+<h1>Review Order</h1>
+
+<%= render partial: "order", locals: { order: order } %>
+
+<h1>AMOUNT DUE</h1>
+<p>10,0000 bitcoin</p>
+<%= form.text_field :id, type: :hidden %>
+<%= form.submit "Complete Order" %>
+

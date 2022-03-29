@@ -1,6 +1,6 @@
-<h1>Extras</h1>
-<% extras_frame_id = dom_id(order, "extras") %>
-<%= turbo_frame_tag extras_frame_id, data: { turbo_frame: extras_frame_id } do %>
+<h1>Toppings</h1>
+<% toppings_frame_id = dom_id(order, "toppings") %>
+<%= turbo_frame_tag toppings_frame_id, data: { turbo_frame: toppings_frame_id } do %>
   <%= form_with(model: order) do |form| %>
     <% if order.errors.any? %>
       <div style="color: red">
@@ -14,11 +14,11 @@
       </div>
     <% end %>
 
-    <% Order::EXTRAS.each do |extra| %>
-      <br />
-      <%= form.check_box :extras, {multiple: true}, extra, false %>
-      <%= form.label extra %>
-    <% end %>
-    <%= form.submit "Continue Order" %>
+      <% Order::TOPPINGS.each do |topping| %>
+        <br />
+        <%= form.check_box :toppings, {multiple: true}, topping, false %>
+        <%= form.label topping %>
+      <% end %>
+      <%= form.submit "Continue Order" %>
   <% end %>
 <% end %>
