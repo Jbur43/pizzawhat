@@ -4,6 +4,6 @@
 
 <h1>AMOUNT DUE</h1>
 <p>10,0000 bitcoin</p>
-<%= form.text_field :id, type: :hidden %>
-<%= form.submit "Complete Order" %>
+
+<%= link_to "Complete Order", complete_order_path, class: "bg-green-400 border-stone-500" %>
 
